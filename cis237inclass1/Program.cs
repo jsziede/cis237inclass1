@@ -23,7 +23,7 @@ namespace cis237inclass1
             Console.WriteLine(employee1.ToString());
 
             //Console.WriteLine(employee.GetFullName());
-            //Console.WriteLine(employee.ToString());\
+            //Console.WriteLine(employee.ToString());
 
             //showing how to use an array with objects
             Employee[] employees = new Employee[10];
@@ -41,6 +41,41 @@ namespace cis237inclass1
                 {
                     Console.WriteLine(employee.ToString());
                 }
+            }
+
+            //we are creating a new userinterface class, and it is ok
+            //that the userinterface class does not have a defined constructor
+            UserInterface ui = new UserInterface();
+
+            //call the getuserrinput method of the ui class
+            //it will return a valid integer that represents the choice they want to do
+            int choice = ui.GetUserInput();
+                                                                                                              ///userinterface
+            //while the user's choice is not the exit option from the menu
+            while(choice != 2)
+            {
+                //only other option besides two is one, but just in case there were more options added
+                if (choice == 1)
+                {
+                    //create an empty string to concat to                                 
+                    string allOutput = "";                                                // -|
+                                                                                          //  |
+                    //for each employee in the employees array                            //  |
+                    foreach (Employee employee in employees)                              //  |
+                    {                                                                     //  |
+                        //so long as the spot in the array is not null                    //  |
+                        if (employee != null)                                             //  |
+                        {                                                                 //  |
+                            allOutput += employee.ToString() + Environment.NewLine;       // <-
+                        }
+                    }
+
+                    ui.PrintAllOuput(allOutput);
+                }
+
+                //not that the work that we wanted to do is done,
+                //we need to reprompt the user
+                choice = ui.GetUserInput();
             }
         }
 
